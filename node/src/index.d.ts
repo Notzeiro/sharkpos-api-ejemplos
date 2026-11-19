@@ -53,6 +53,22 @@ export interface EmissionResponse {
   [campo: string]: unknown;
 }
 
+export interface DocumentStatus {
+  status: "ok";
+  dte_id: string;
+  document_type: number;
+  folio: number;
+  /** Estado interno: SIGNED, SENT_PENDING, ACCEPTED, REJECTED_SII... */
+  dte_status: string;
+  public_status: DocumentStatusName;
+  message?: string;
+  solution?: string;
+  is_final?: boolean;
+  requires_attention?: boolean;
+  track_id?: string | null;
+  [campo: string]: unknown;
+}
+
 export type DocumentStatusName =
   | "preparing" | "queued" | "sent" | "accepted" | "accepted_with_repair"
   | "rejected" | "review_required" | "failed" | "annulled";
@@ -148,7 +164,7 @@ export class SharkposClient {
   emitGuiaDespacho(body: DocumentRequest, idempotencyKey?: string): Promise<EmissionResponse>;
   voidGuiaDespacho(dteId: string, reason: string): Promise<Json>;
 
-  getDocument(dteId: string): Promise<Json>;
+  getDocument(dteId: string): Promise<DocumentStatus>;
   getBoletaStatus(dteId: string): Promise<Json>;
   getDocumentTed(dteId: string): Promise<Json>;
   getDocumentXml(dteId: string): Promise<Buffer>;

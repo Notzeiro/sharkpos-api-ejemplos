@@ -17,6 +17,21 @@ Esta skill es para Claude Code. Instálala guardando este archivo como `~/.claud
    https://api.sharkpos.cl/sandbox/ (2 horas, 6 horas, 24 horas o 7 días). Nunca apuntes a producción
    (`https://api.sharkpos.cl`) mientras pruebas: ahí cada documento es real ante el SII.
 
+## SDKs y MCP oficiales (úsalos antes de escribir HTTP a mano)
+
+Este repositorio (`sharkpos-api-ejemplos`) trae clientes que ya implementan Bearer, `Idempotency-Key` y reintentos:
+
+- Python: `pip install ./python` y `from sharkpos import SharkposClient`.
+- Node/TypeScript: `npm install ./node` y `import { SharkposClient } from "sharkpos"`.
+- PHP: copia `php/SharkposClient.php`.
+- Postman: `postman/sharkpos-api.postman_collection.json`.
+- Servidor MCP (`mcp/`): `claude mcp add sharkpos -e SHARKPOS_API_KEY=<llave de prueba> -- node <ruta>/mcp/src/index.js`.
+  Por defecto apunta al sandbox; sus herramientas de emisión generan documentos reales solo con una API key de
+  producción y `SHARKPOS_ENV=production`. No cambies a producción sin que la persona lo pida.
+
+Si el proyecto ya usa uno de estos SDKs, no reimplementes la capa HTTP. Los endpoints sin método propio se llaman con
+`client.request(...)` (Python/Node).
+
 ## Reglas que no se negocian (resumen; la guía manda)
 
 - La API key va solo en el backend, leída de una variable de entorno (`SHARKPOS_API_KEY`). Nunca en el

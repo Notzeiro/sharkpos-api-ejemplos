@@ -15,7 +15,7 @@ const boleta = await client.emitBoleta(
   { amount_total: 3000, items: [{ name: "Café", qty: 2, price: 1500 }] },
   "venta-884",                                               // Idempotency-Key estable por venta
 );
-console.log(boleta.folio, (await client.getDocument(boleta.dte_id)).status);
+console.log(boleta.folio, (await client.getDocument(boleta.dte_id)).public_status);
 ```
 
 - **Idempotencia**: todo POST de emisión lleva `Idempotency-Key`. Sin la tuya, el SDK genera un UUID4 y lo reutiliza

@@ -13,7 +13,7 @@ from sharkpos import SharkposClient
 client = SharkposClient(sandbox=True)          # lee SHARKPOS_API_KEY
 boleta = client.emit_boleta({"amount_total": 3000, "items": [{"name": "Café", "qty": 2, "price": 1500}]},
                             idempotency_key="venta-884")
-print(boleta["folio"], client.get_document(boleta["dte_id"])["status"])
+print(boleta["folio"], client.get_document(boleta["dte_id"])["public_status"])
 ```
 
 - **Idempotencia**: todo POST de emisión lleva `Idempotency-Key`. Si no la pasas, el SDK genera un UUID4 y lo

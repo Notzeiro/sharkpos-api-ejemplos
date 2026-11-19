@@ -18,7 +18,7 @@ import uuid
 from typing import Any, Callable, Dict, Iterator, List, Mapping, Optional, Sequence, Tuple
 
 from .errors import ConnectionFailedError, SharkposError, error_for_status
-from .types import JSON, Document
+from .types import JSON, Document, DocumentStatus
 
 PRODUCTION_URL = "https://api.sharkpos.cl"
 SANDBOX_URL = "https://sandbox.sharkpos.cl"
@@ -254,7 +254,7 @@ class SharkposClient:
 
     # ------------------------------------------------------------ Documentos
 
-    def get_document(self, dte_id: str) -> Document:
+    def get_document(self, dte_id: str) -> DocumentStatus:
         """Estado vigente de un documento (cualquier tipo)."""
         return self.request("GET", f"/api/v1/dte/documents/{dte_id}/")
 

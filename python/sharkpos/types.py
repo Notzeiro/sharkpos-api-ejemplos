@@ -59,3 +59,17 @@ class Document(TypedDict, total=False):
     receptor_rut: str
     receptor_name: str
     amounts: Dict[str, Any]
+
+
+class DocumentStatus(TypedDict, total=False):
+    status: str  # "ok"
+    dte_id: str
+    document_type: int
+    folio: int
+    dte_status: str  # estado interno: SIGNED, SENT_PENDING, ACCEPTED, REJECTED_SII...
+    public_status: str  # accepted, rejected, queued, sent, failed...
+    message: str
+    solution: str
+    is_final: bool
+    requires_attention: bool
+    track_id: Optional[str]
