@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sharkpos"
+version = "0.1.0"
+description = "Cliente oficial de SharkPOS API: boleta y factura electrónica del SII (Chile)."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = []
+keywords = ["sii", "dte", "boleta electronica", "factura electronica", "chile", "sharkpos"]
+
+[project.urls]
+Documentacion = "https://api.sharkpos.cl/docs"
+
+[tool.setuptools]
+packages = ["sharkpos"]
+
+[tool.setuptools.package-data]
+sharkpos = ["py.typed"]
