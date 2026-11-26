@@ -32,7 +32,7 @@ La API key se lee **solo** de la variable de entorno; el servidor no acepta llav
 claude mcp add sharkpos -e SHARKPOS_API_KEY=tu_llave_de_prueba -- npx -y sharkpos-mcp
 ```
 
-Codex: `codex mcp add sharkpos --env SHARKPOS_API_KEY=tu_llave_de_prueba -- npx -y sharkpos-mcp`.
+Codex: agrega en `~/.codex/config.toml` una sección `[mcp_servers.sharkpos]` con `command = "npx"`, `args = ["-y", "sharkpos-mcp"]` y la variable `SHARKPOS_API_KEY` en `env`.
 Solo para leer la documentación, sin API key, usa el MCP remoto: `claude mcp add --transport http sharkpos-docs https://api.sharkpos.cl/mcp`.
 
 ## Agregarlo a Claude Code
