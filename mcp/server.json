@@ -1,0 +1,36 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Notzeiro/sharkpos-mcp",
+  "title": "SharkPOS API (emitir DTE del SII)",
+  "description": "Emite y consulta boletas y facturas electrónicas del SII de Chile con SharkPOS API.",
+  "version": "0.1.0",
+  "websiteUrl": "https://api.sharkpos.cl/docs#agentes",
+  "repository": {
+    "url": "https://github.com/Notzeiro/sharkpos-api-ejemplos",
+    "source": "github",
+    "subfolder": "mcp"
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "sharkpos-mcp",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "SHARKPOS_API_KEY",
+          "description": "API key de SharkPOS (pide una de prueba en https://api.sharkpos.cl/sandbox/)",
+          "isRequired": true,
+          "isSecret": true
+        },
+        {
+          "name": "SHARKPOS_ENV",
+          "description": "production para emitir de verdad; por defecto sandbox",
+          "isRequired": false
+        }
+      ]
+    }
+  ]
+}

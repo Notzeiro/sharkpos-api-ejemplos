@@ -26,6 +26,15 @@ La API key se lee **solo** de la variable de entorno; el servidor no acepta llav
 | `SHARKPOS_MCP_OUTPUT_DIR` | Carpeta donde se guardan los PDF (por defecto una carpeta temporal). |
 | `SHARKPOS_BASE_URL` | Sobreescribe la URL base. |
 
+## Instalar desde npm (sin clonar el repo)
+
+```bash
+claude mcp add sharkpos -e SHARKPOS_API_KEY=tu_llave_de_prueba -- npx -y sharkpos-mcp
+```
+
+Codex: `codex mcp add sharkpos --env SHARKPOS_API_KEY=tu_llave_de_prueba -- npx -y sharkpos-mcp`.
+Solo para leer la documentación, sin API key, usa el MCP remoto: `claude mcp add --transport http sharkpos-docs https://api.sharkpos.cl/mcp`.
+
 ## Agregarlo a Claude Code
 
 ```bash

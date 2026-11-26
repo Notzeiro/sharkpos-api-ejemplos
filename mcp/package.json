@@ -1,19 +1,49 @@
 {
   "name": "sharkpos-mcp",
   "version": "0.1.0",
-  "description": "Servidor MCP de SharkPOS API: boleta y factura electrónica del SII para agentes de IA.",
+  "description": "Servidor MCP de SharkPOS API: emite y consulta boletas y facturas electrónicas del SII de Chile desde Claude, Cursor o Codex (sandbox por defecto).",
   "type": "module",
-  "bin": { "sharkpos-mcp": "./src/index.js" },
+  "bin": {
+    "sharkpos-mcp": "./src/index.js"
+  },
   "main": "./src/index.js",
-  "engines": { "node": ">=18" },
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "start": "node src/index.js",
     "test": "node --test \"test/*.test.js\""
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.32.2",
-    "sharkpos": "file:../node",
+    "sharkpos": "^0.1.0",
     "zod": "^3.25.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "mcpName": "io.github.Notzeiro/sharkpos-mcp",
+  "homepage": "https://api.sharkpos.cl/docs#agentes",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Notzeiro/sharkpos-api-ejemplos.git",
+    "directory": "mcp"
+  },
+  "author": "ZEIRO SpA <contacto@sharkpos.cl>",
+  "keywords": [
+    "api",
+    "boleta",
+    "chile",
+    "claude",
+    "codex",
+    "cursor",
+    "dte",
+    "electronic invoicing",
+    "factura",
+    "mcp",
+    "model context protocol",
+    "sii"
+  ],
+  "files": [
+    "src",
+    "README.md"
+  ]
 }
