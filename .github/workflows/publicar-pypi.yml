@@ -1,0 +1,32 @@
+# Publica el SDK de Python (carpeta python/) en PyPI con Trusted Publishing: sin tokens ni contraseñas.
+# PyPI confía en este workflow porque está registrado como «trusted publisher» del proyecto sharkpos.
+# Se ejecuta al crear un tag python-v* (por ejemplo python-v0.1.0) o a mano desde la pestaña Actions.
+name: Publicar SDK de Python en PyPI
+
+on:
+  push:
+    tags: ["python-v*"]
+  workflow_dispatch:
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Probar
+        working-directory: python
+        run: python -m unittest discover -s tests -q
+      - name: Construir
+        working-directory: python
+        run: python -m pip install build && python -m build
+      - name: Publicar en PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: python/dist
